@@ -6,6 +6,7 @@ Python, djangoで作成した社内SNS app。
 # Environment
 - Python 3.7.4
 - django 3.0.1
+- pillow 7.0.0
 - Bootstrap
 - html
 - CSS
