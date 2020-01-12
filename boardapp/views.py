@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
 from .models import BoardModel
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def signupfunc(request):
@@ -29,13 +30,17 @@ def loginfunc(request):
         # <条件分岐 登録ユーザーなら>
         if user is not None:
             login(request, user)
-            return redirect('signup')
+            return redirect('list')
         #<登録ユーザーじゃなければ>
         else:
             return redirect('login')
 
     return  render(request, 'login.html')
-
+@login_required # login遷移 ショートカットとして、便利な login_required() デコレータを利用できます:
 def listfunc(request):
     object_list = BoardModel.objects.all() #object_list
     return render(request, 'list.html', {'object_list':object_list})
+
+def logoutfunc(request): #logout
+    logout(request)
+    return redirect('login')
