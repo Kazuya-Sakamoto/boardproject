@@ -3,10 +3,18 @@
 # Details
 Python, djangoで作成した社内SNS app。
 
-# Environment
+## Environment
 - Python 3.7.4
 - django 3.0.1
 - pillow 7.0.0
 - Bootstrap 4.4.1
 - html
 - CSS
+
+## Functions
+- login
+- logout
+- signin
+- board.crate
+- likes
+- already read
