@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- ログインしていない場合は -->
+{% if user.is_authenticated %}
+<form action='' method='POST' enctype="multipart/form-data">{% csrf_token %}
+    <!-- 以下だと BoardModelのカラムを全部取得してしまう。
+    author などuserは一度ログインをしているため、再度投稿者を聞いてしまう。-->
+    <!-- {{form.as_p}} -->
+    <P>タイトル:<input type='text' name='title'></P>
+    <p>内容:<input type='text' name='content'></p>
+    <p>画像:<input type='file' name='images'></p>
+    <input type='hidden' name='author' value="{{user.username}}">
+    <input type='submit' value="作成する">
+</form>
+<!-- ログインしていない場合は -->
+{% else %}
+ログインしてください
+{% endif %}
+{% endblock content %}
+

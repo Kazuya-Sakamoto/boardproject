@@ -8,6 +8,6 @@ class BoardModel(models.Model):
     author = models.CharField(max_length=100)
     # upload_to 画像の保存先
     images = models.ImageField(upload_to='')
-    good = models.IntegerField()
-    read = models.IntegerField()
-    readtext = models.CharField(max_length=200)
+    good = models.IntegerField(null=True, blank=True, default=0)
+    read = models.IntegerField(null=True, blank=True, default=0)
+    readtext = models.CharField(max_length=200, null=True, blank=True, default='a')
